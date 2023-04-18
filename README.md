@@ -228,7 +228,7 @@ printed to the console and displayed in a pop-up window. The `matplotlib` librar
 display the images in the form of a plot. 
 
 #### Problem (a): Computing Correlation Matrix using Dot Product
-The resultant dot product (correlation) matrix between the first 100 images are plotted as followed:
+The resultant dot product (correlation) matrix between the first 100 images are plotted as followed:  
 ![download](https://user-images.githubusercontent.com/125385468/232674818-baf7ce66-d67c-465b-96e6-94afe61e22dc.png)
 
 #### Problem (b): Identifying Highly Correlated and Uncorrelated Images
@@ -242,16 +242,13 @@ print (most_correlated[0], least_correlated[0])
 We could determine that the pairs `[86 88] [54 64]` represent the indices of the images we are looking for. 
 
 Plotting the following images yield:  
-
 ![download](https://user-images.githubusercontent.com/125385468/232675169-a2d1cddd-13b8-47db-b0f5-4176f676c089.png)
 
 and
-
 ![download](https://user-images.githubusercontent.com/125385468/232675206-9cf1c489-db47-4a41-a928-71bfea5d6583.png)
 
 #### Problem (c): Computing Correlation Matrix for Subset of Images
 The resultant dot product (correlation) matrix between the first 10 images are plotted as followed:  
-
 ![download](https://user-images.githubusercontent.com/125385468/232675344-552f1047-e830-4f7a-b9a7-c3a4ddbce12c.png)
 
 #### Problem (d): Finding the First Six Eigenvectors of $Y=XX^T$
@@ -307,7 +304,6 @@ Percentage of variance captured by each SVD mode 6: 0.59%
 ```
 
 In addition, plotted SVD nodes were as followed:  
-
 ![download](https://user-images.githubusercontent.com/125385468/232675682-a428b9fe-b24c-483a-9631-1cf849293455.png)
 
 ## Summary and Conclusions:
