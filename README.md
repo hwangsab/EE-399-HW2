@@ -9,7 +9,6 @@ face (2414 faces in all) in the form of a matrix. The individual images of the c
 X, where each image has been downsampled to 32 x 32 pixels and coverted into greyscale with values 
 between 0 and 1. 
 
-
 The accompanying Python code performs correlation matrix computations, and computes the correlation 
 between the set of images provided within the matrix. In addition, the code makes additional 
 computations for SVD, eigenvector comparisons, and percentage of variance. 
@@ -20,23 +19,17 @@ computations for SVD, eigenvector comparisons, and percentage of variance.
 * [Theoretical Background](https://github.com/hwangsab/EE-399-HW2/blob/main/README.md#theoretical-background)
 * [Algorithm Implementation and Development](https://github.com/hwangsab/EE-399-HW2/blob/main/README.md#algorithm-implementation-and-development)
   * [Code Description](https://github.com/hwangsab/EE-399-HW2/blob/main/README.md#code-description)
-    * [Problem 1: Finding Minimum Error and Optimizing Parameters](https://github.com/hwangsab/EE-399-HW2/blob/main/README.md#problem-1-finding-minimum-error-and-optimizing-parameters)
-    * [Problem 2: Generating 2D Error Landscape](https://github.com/hwangsab/EE-399-HW2/blob/main/README.md#problem-2-generating-2d-error-landscape)
-    * [Problem 3: Fitting and Applying Models to Datasets I](https://github.com/hwangsab/EE-399-HW2/blob/main/README.md#problem-3-fitting-and-applying-models-to-datasets-i)
-    * [Problem 4: Fitting and Applying Models to Datasets II](https://github.com/hwangsab/EE-399-HW2/blob/main/README.md#problem-4-fitting-and-applying-models-to-datasets-ii)
+    * [Problem (a): Finding Minimum Error and Optimizing Parameters](https://github.com/hwangsab/EE-399-HW2/blob/main/README.md#problem-1-finding-minimum-error-and-optimizing-parameters)
 * [Computational Results](https://github.com/hwangsab/EE-399-HW2/blob/main/README.md#computational-results)
   * [Usage](https://github.com/hwangsab/EE-399/blob/main/README.md#usage)
-  * [Problem 1: Finding Minimum Error and Optimizing Parameters](https://github.com/hwangsab/EE-399-HW2/blob/main/README.md#problem-1-finding-minimum-error-and-optimizing-parameters-1)
-  * [Problem 2: Generating 2D Error Landscape](https://github.com/hwangsab/EE-399-HW2/blob/main/README.md#problem-2-generating-2d-error-landscape-1)
-  * [Problem 3: Fitting and Applying Models to Datasets I](https://github.com/hwangsab/EE-399-HW2/blob/main/README.md#problem-3-fitting-and-applying-models-to-datasets-i-1)
-  * [Problem 4: Fitting and Applying Models to Datasets II](https://github.com/hwangsab/EE-399-HW2/blob/main/README.md#problem-4-fitting-and-applying-models-to-datasets-ii-1)
+  * [Problem (a): Finding Minimum Error and Optimizing Parameters](https://github.com/hwangsab/EE-399-HW2/blob/main/README.md#problem-1-finding-minimum-error-and-optimizing-parameters-1)
 * [Summary and Conclusion](https://github.com/hwangsab/EE-399-HW2/blob/main/README.md#summary-and-conclusions)
 
 ## Introduction and Overview:
 In this homework assignment, we will explore a dataset of 39 different faces, each with about 65 
-different lighting scenes, for a total of 2,414 images. The images are downsampled to 32x32 pixels 
+different lighting scenes, for a total of 2,414 images. The images are downsampled to 32 x 32 pixels 
 and converted into grayscale with values ranging from 0 to 1. The dataset is stored in a matrix X of 
-size 1024x2414, where each column corresponds to an image.
+size 1024 x 2414, where each column corresponds to an image.
 
 The first task (a) is to compute a 100x100 correlation matrix C, where each element represents the 
 correlation between two images. The correlation is computed as the dot product between the two 
@@ -83,10 +76,12 @@ finding the principal components of a dataset and for compressing the data by re
 of the singular values.
 
 ## Algorithm Implementation and Development:
-This homework assignment works around the following dataset:
+This homework assignment works around a dataset imported through the following lines of code:
 ```
-X = np.arange(0, 31)
-Y = np.array([30, 35, 33, 32, 34, 37, 39, 38, 36, 36, 37, 39, 42, 45, 45, 41, 40, 39, 42, 44, 47, 49, 50, 49, 46, 48, 50, 53, 55, 54, 53])
+import numpy as np
+from scipy.io import loadmat
+results=loadmat(’yalefaces.mat’)
+X=results[’X’]
 ```
 
 Completion of this project and subsequent development and implementation of the algorithm was 
@@ -97,10 +92,10 @@ The code is written in Python and uses the following libraries:
 * `numpy` for numerical computing  
 * `matplotlib` for data visualization  
 * `math` for mathematical functions  
-* `warnings` for error message override  
-* `scipy` for curve fitting  
+* `random` for random generation
+* `scipy` for curve fitting
 
-#### Problem 1: Finding Minimum Error and Optimizing Parameters
+#### Problem (a): Finding Minimum Error and Optimizing Parameters
 The code reads a dataset of 31 points and defines a function to fit the data using least-squares curve 
 fitting. The function `func(X, A, B, C, D)` is a combination of a cosine function and a linear function 
 with four parameters $A$, $B$, $C$, $D$ that are to be optimized. The `curve_fit` function from scipy 
