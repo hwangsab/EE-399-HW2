@@ -4,12 +4,15 @@
 
 ## Abstract:
 This code was created for EE 399 Introduction to Machine Learning, HW 2 submission by Sabrina Hwang. 
-The code implements a least-squares curve fitting technique to find the parameters of a given function 
-that best fits a given dataset. Additionally, it generates a 2D error landscape by sweeping through 
-different values of the function parameters and fixing two parameters at a time.
+This code uses a file that has a total of 39 different faces with about 65 lighting scenes for each 
+face (2414 faces in all) in the form of a matrix. The individual images of the columns in the matrix 
+X, where each image has been downsampled to 32 x 32 pixels and coverted into greyscale with values 
+between 0 and 1. 
 
-The accompanying Python code performs optimization and machine learning on the models, of which the 
-accuracy of them are then evaluated using the least squared error calculations. 
+
+The accompanying Python code performs correlation matrix computations, and computes the correlation 
+between the set of images provided within the matrix. In addition, the code makes additional 
+computations for SVD, eigenvector comparisons, and percentage of variance. 
 
 ## Table of Contents:
 * [Abstract](https://github.com/hwangsab/EE-399-HW2/blob/main/README.md#abstract)
@@ -30,11 +33,19 @@ accuracy of them are then evaluated using the least squared error calculations.
 * [Summary and Conclusion](https://github.com/hwangsab/EE-399-HW2/blob/main/README.md#summary-and-conclusions)
 
 ## Introduction and Overview:
-Fitting data to models remains a fundamental theme throughout optimization and machine learning processes. 
-This assignment in particular exercises tasks of fitting various kinds of models to a fixed 2D dataset. 
-This dataset consists of 31 points, which are then fit to a function that is the combination of a cosine
-function, a linear function, and a constant value. 
+In this homework assignment, we will explore a dataset of 39 different faces, each with about 65 different lighting scenes, for a total of 2,414 images. The images are downsampled to 32x32 pixels and converted into grayscale with values ranging from 0 to 1. The dataset is stored in a matrix X of size $$1024x2414$$, where each column corresponds to an image.
 
+The first task is to compute a 100x100 correlation matrix C, where each element represents the correlation between two images. The correlation is computed as the dot product between the two images' vectors. We will plot the correlation matrix using the pcolor function.
+
+From the correlation matrix, we will identify the two images that are most highly correlated and the two images that are least correlated. We will plot these faces to visually compare the similarities and differences between them.
+
+Next, we will repeat the correlation matrix computation, but this time we will compute a 10x10 matrix and plot it. This will allow us to compare the correlation between images in a smaller subset of the dataset.
+
+In parts (d) and (e), we will use different methods to find the first six eigenvectors and principal component directions, respectively, of the matrix X. We will then compare the first eigenvector found using both methods and compute the norm of the difference in their absolute values.
+
+Finally, we will compute the percentage of variance captured by each of the first six SVD modes and plot the first six SVD modes. This will give us an idea of how much information is retained by using these modes to represent the images instead of the original matrix X.
+
+Overall, this homework assignment will provide an opportunity to explore and analyze a real-world dataset using various linear algebra techniques
 ## Theoretical Background:
 The theoretical foundation for this code is based on the concept of linear regression, which is a 
 statistical method used to analyze the relationship between two variables. In simple linear regression, 
