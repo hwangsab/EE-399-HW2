@@ -33,38 +33,54 @@ computations for SVD, eigenvector comparisons, and percentage of variance.
 * [Summary and Conclusion](https://github.com/hwangsab/EE-399-HW2/blob/main/README.md#summary-and-conclusions)
 
 ## Introduction and Overview:
-In this homework assignment, we will explore a dataset of 39 different faces, each with about 65 different lighting scenes, for a total of 2,414 images. The images are downsampled to 32x32 pixels and converted into grayscale with values ranging from 0 to 1. The dataset is stored in a matrix X of size $$1024x2414$$, where each column corresponds to an image.
+In this homework assignment, we will explore a dataset of 39 different faces, each with about 65 
+different lighting scenes, for a total of 2,414 images. The images are downsampled to 32x32 pixels 
+and converted into grayscale with values ranging from 0 to 1. The dataset is stored in a matrix X of 
+size 1024x2414, where each column corresponds to an image.
 
-The first task is to compute a 100x100 correlation matrix C, where each element represents the correlation between two images. The correlation is computed as the dot product between the two images' vectors. We will plot the correlation matrix using the pcolor function.
+The first task (a) is to compute a 100x100 correlation matrix C, where each element represents the 
+correlation between two images. The correlation is computed as the dot product between the two 
+images' vectors. We will plot the correlation matrix using the pcolor function.
 
-From the correlation matrix, we will identify the two images that are most highly correlated and the two images that are least correlated. We will plot these faces to visually compare the similarities and differences between them.
+From the correlation matrix, we will identify the two images that are most highly correlated and the 
+two images that are least correlated in part (b). We will plot these faces to visually compare the 
+similarities and differences between them.
 
-Next, we will repeat the correlation matrix computation, but this time we will compute a 10x10 matrix and plot it. This will allow us to compare the correlation between images in a smaller subset of the dataset.
+Next, we will repeat the correlation matrix computation in (c), but this time we will compute a 10x10 
+matrix and plot it. This will allow us to compare the correlation between images in a smaller subset 
+of the dataset.
 
-In parts (d) and (e), we will use different methods to find the first six eigenvectors and principal component directions, respectively, of the matrix X. We will then compare the first eigenvector found using both methods and compute the norm of the difference in their absolute values.
+In parts (d) and (e), we will use different methods to find the first six eigenvectors and principal 
+component directions, respectively, of the matrix X. We will then compare the first eigenvector found 
+using both methods and compute the norm of the difference in their absolute values.
 
-Finally, we will compute the percentage of variance captured by each of the first six SVD modes and plot the first six SVD modes. This will give us an idea of how much information is retained by using these modes to represent the images instead of the original matrix X.
+Finally, we will compute the percentage of variance captured by each of the first six SVD modes and 
+plot the first six SVD modes. This will give us an idea of how much information is retained by using 
+these modes to represent the images instead of the original matrix X.
 
-Overall, this homework assignment will provide an opportunity to explore and analyze a real-world dataset using various linear algebra techniques
 ## Theoretical Background:
-The theoretical foundation for this code is based on the concept of linear regression, which is a 
-statistical method used to analyze the relationship between two variables. In simple linear regression, 
-the goal is to find a line that best fits the data points, where one variable is considered the
-dependent variable and the other is considered the independent variable. The line is determined by 
-minimizing the sum of squared differences between the predicted values and the actual values.
+To successfully complete this assignment, a solid foundation in linear algebra and its applications 
+is necessary. Specifically, knowledge of matrix operations, eigenvalues and eigenvectors, and 
+singular value decomposition (SVD) is essential.
 
-This method can be extended to multiple linear regression, where there are more than one independent 
-variables. In this case, the goal is to find a plane that best fits the data points. 
+Matrix operations such as addition, subtraction, and multiplication are fundamental to this 
+assignment. We will use dot products and element-wise multiplication of matrices to compute the 
+correlation matrix and to find the eigenvectors and singular values of the matrix X. Additionally, 
+knowledge of matrix transposition and reshaping will be useful in preparing the data for analysis and 
+visualization.
 
-The models for this assignment are fit to the data with the least-squares error equation:
-$$E=\sqrt{(1/n)\sum_{j=1}^{n}(f(x_j)-y_j)^2}$$
+Eigenvalues and eigenvectors play a critical role in analyzing the correlation matrix and finding the 
+first six eigenvectors with the largest magnitude eigenvalue. Eigenvectors represent directions along 
+which a transformation acts only by stretching or shrinking, and eigenvalues represent the magnitude 
+of the stretch or shrink in that direction. In this assignment, we will use the eigenvectors of the 
+correlation matrix to find the principal components of the data, which can be used to reduce the 
+dimensionality of the dataset while retaining most of the information.
 
-As mentioned before, the function structure represents a combination of a cosine function, a linear 
-function, and a constant, of which are determined by the parameters $A$, $B$, $C$, and $D$. This structure
-can be mathematically represented by the function:
-$$f(x)=Acos(Bx)+Cx+D$$
-
-These parameters are then optimized with Python code. 
+Singular value decomposition (SVD) is another key concept for this assignment. SVD decomposes a 
+matrix into three components: U, Σ, and V*, where U and V* are orthogonal matrices and Σ is a 
+diagonal matrix with the singular values of the original matrix on its diagonal. SVD is useful for 
+finding the principal components of a dataset and for compressing the data by retaining only a subset 
+of the singular values.
 
 ## Algorithm Implementation and Development:
 This homework assignment works around the following dataset:
@@ -237,8 +253,5 @@ the end, and because the dataset provided is relatively continuous, the model fi
 trained with points from the beginning and the end.
 
 ## Summary and Conclusions:
-This code demonstrates how least-squares curve fitting can be used to find the parameters of a function 
-that best fit a given dataset. Additionally, it shows how a 2D error landscape can be generated to 
-visualize the relationship between the function parameters and the error. The code can be used as a 
-starting point for more complex curve fitting problems and for exploring the relationship between 
-different function parameters.
+Overall, this homework assignment provides an opportunity to explore and analyze a real-world dataset
+using various linear algebra techniques. 
