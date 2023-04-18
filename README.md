@@ -121,7 +121,8 @@ pcolor function of the matplotlib library. The color of each element of the plot
 strength of correlation between the corresponding images.
 
 ```
-code here
+images = X[:, :100]
+C = np.matmul(images.T, images)
 ```
 #### Problem (b): Identifying Highly Correlated and Uncorrelated Images
 In this problem, the most highly correlated and most uncorrelated pairs of images are identified from 
@@ -136,7 +137,10 @@ For each pair of images, the corresponding face images are plotted side by side.
 plotted using the `imshow()` function from the `matplotlib` library.
 
 ```
-code here
+most_correlated = np.argwhere(C == np.sort(C.flatten())[-3])
+least_correlated = np.argwhere(C == np.sort(C.flatten())[1])
+
+print (most_correlated[0], least_correlated[0])
 ```
 #### Problem (c): Computing Correlation Matrix for Subset of Images
 This problem is similar to Problem (a), except the correlation matrix is now computed between a 
@@ -147,7 +151,11 @@ matrix. The images are then used to compute the correlation matrix $C$, which is
 the `pcolor()` function.
 
 ```
-code here
+images = [1, 313, 512, 5, 2400, 113, 1024, 87, 314, 2005]
+image_list = X[:, np.subtract(images, 1)]
+
+C = np.ndarray((10, 10))
+C = np.matmul(image_list.T, image_list)
 ```
 #### Problem (d): Finding the First Six Eigenvectors of $Y = XX^T$
 This problem involves finding the first six eigenvectors with the largest magnitude eigenvalues for 
@@ -161,7 +169,13 @@ The six eigenvectors with the largest magnitude eigenvalues are extracted and st
 matrix. The first eigenvector is stored in the `v_1` vector, which is printed.
 
 ```
-code here
+Y = np.dot(X, X.T)
+eigenvalues, eigenvectors = np.linalg.eigh(Y)
+
+W = np.argsort(eigenvalues)[::-1]
+eigenvectors = eigenvectors[:, W]
+
+v_1 = eigenvectors[:, 0]
 ```
 #### Problem (e): Finding the First Six Principal Component Directions using SVD
 This problem involves computing the first six principal component directions of the matrix $X$ using 
@@ -175,7 +189,8 @@ first six rows of the $V$ matrix.
 The first six principal component directions are printed.
 
 ```
-code here
+U, S, V = np.linalg.svd(X, full_matrices = False)
+first_six = V[:6, :]
 ```
 #### Problem (f): Comparing First Eigenvector and First SVD Mode
 In problem (d), we calculated the first eigenvector `v_1`, using the covariance matrix of the image 
@@ -190,7 +205,8 @@ using the `np.linalg.norm` function. The result is printed as the norm of the di
 values of `v_1` and `u_1`.
 
 ```
-code here
+u_1 = U[:, 0]
+norm_of_difference = np.linalg.norm(np.abs(v_1) - np.abs(u_1))
 ```
 #### Problem (g): Computing Variance Captured by Each of the First 6 SVD Modes and Plotting Them
 In this problem, we compute the percentage of variance captured by each of the first six SVD modes 
@@ -204,10 +220,6 @@ orientation. The plot is displayed in a 2x3 grid with each plot displaying the i
 corresponding SVD mode with a title "SVD Mode k", where k is the mode number from 0 to 5. The plot is 
 displayed using the `plt.show()` function.
 
-```
-code here
-```
-
 ## Computational Results:
 
 ### Usage
@@ -215,13 +227,64 @@ To run the code, simply run the Python file `hw2.py` in any Python environment. 
 printed to the console and displayed in a pop-up window. The `matplotlib` library is required to 
 display the images in the form of a plot. 
 
-#### Problem 1: Finding Minimum Error and Optimizing Parameters
+#### Problem (a): Computing Correlation Matrix using Dot Product
 The resultant cosine model fits over the data with optimized parameters with values as follows:
 ```
-A = 2.1717269828948855
-B = 0.909325796914226
-C = 0.7324885143513572
-D = 31.452772437053802
+code
+```
+In addition, the model has an minimum error value of `1.5927258503103892`
+
+![Q1](https://user-images.githubusercontent.com/125385468/231071680-c452328b-7c99-4d80-91c0-8577614a15a9.png)
+
+#### Problem (b): Identifying Highly Correlated and Uncorrelated Images
+The resultant cosine model fits over the data with optimized parameters with values as follows:
+```
+code
+```
+In addition, the model has an minimum error value of `1.5927258503103892`
+
+![Q1](https://user-images.githubusercontent.com/125385468/231071680-c452328b-7c99-4d80-91c0-8577614a15a9.png)
+
+#### Problem (c): Computing Correlation Matrix for Subset of Images
+The resultant cosine model fits over the data with optimized parameters with values as follows:
+```
+code
+```
+In addition, the model has an minimum error value of `1.5927258503103892`
+
+![Q1](https://user-images.githubusercontent.com/125385468/231071680-c452328b-7c99-4d80-91c0-8577614a15a9.png)
+
+#### Problem (d): Finding the First Six Eigenvectors of $Y=XX^T$
+The resultant cosine model fits over the data with optimized parameters with values as follows:
+```
+code
+```
+In addition, the model has an minimum error value of `1.5927258503103892`
+
+![Q1](https://user-images.githubusercontent.com/125385468/231071680-c452328b-7c99-4d80-91c0-8577614a15a9.png)
+
+#### Problem (e): Finding the First Six Principal Component Directions using SVD
+The resultant cosine model fits over the data with optimized parameters with values as follows:
+```
+code
+```
+In addition, the model has an minimum error value of `1.5927258503103892`
+
+![Q1](https://user-images.githubusercontent.com/125385468/231071680-c452328b-7c99-4d80-91c0-8577614a15a9.png)
+
+#### Problem (f): Comparing First Eigenvector and First SVD Mode
+The resultant cosine model fits over the data with optimized parameters with values as follows:
+```
+code
+```
+In addition, the model has an minimum error value of `1.5927258503103892`
+
+![Q1](https://user-images.githubusercontent.com/125385468/231071680-c452328b-7c99-4d80-91c0-8577614a15a9.png)
+
+#### Problem (g): Computing Variance Captured by Each of the First 6 SVD Modes and Plotting Them
+The resultant cosine model fits over the data with optimized parameters with values as follows:
+```
+code
 ```
 In addition, the model has an minimum error value of `1.5927258503103892`
 
