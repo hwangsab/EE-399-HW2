@@ -239,7 +239,7 @@ least_correlated = np.argwhere(C == np.sort(C.flatten())[1])
 
 print (most_correlated[0], least_correlated[0])
 ```
-We could determine that the pairs `[86 88] [54 64]` represent the indices of the images we are looking for. 
+We could determine that the pairs `[86 88]` and `[54 64]` represent the indices of the images we are looking for. 
 
 Plotting the following images yield:  
 ![download](https://user-images.githubusercontent.com/125385468/232675169-a2d1cddd-13b8-47db-b0f5-4176f676c089.png)
