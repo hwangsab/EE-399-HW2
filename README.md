@@ -6,7 +6,7 @@
 This code was created for EE 399 Introduction to Machine Learning, HW 2 submission by Sabrina Hwang. 
 This code uses a file that has a total of 39 different faces with about 65 lighting scenes for each 
 face (2414 faces in all) in the form of a matrix. The individual images of the columns in the matrix 
-X, where each image has been downsampled to 32x32 pixels and coverted into greyscale with values 
+$X$, where each image has been downsampled to 32x32 pixels and coverted into greyscale with values 
 between 0 and 1. 
 
 The accompanying Python code performs correlation matrix computations, and computes the correlation 
