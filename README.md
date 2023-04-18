@@ -95,7 +95,7 @@ The code is written in Python and uses the following libraries:
 * `random` for random generation
 * `scipy` for curve fitting
 
-#### Problem (a): Finding Minimum Error and Optimizing Parameters
+#### Problem (a): Computing Correlation Matrix using Dot Product
 In this problem, a 100 x 100 correlation matrix C is computed by computing the dot product 
 (correlation) between the first 100 images in the matrix X. X is an array consisting of 165 grayscale 
 images of human faces from the Yale Face Database. These images have been preprocessed and flattened 
@@ -111,7 +111,7 @@ strength of correlation between the corresponding images.
 ```
 code here
 ```
-#### Problem (b): Finding Minimum Error and Optimizing Parameters
+#### Problem (b): Identifying Highly Correlated and Uncorrelated Images
 In this problem, the most highly correlated and most uncorrelated pairs of images are identified from 
 the correlation matrix computed in Problem (a), and then the corresponding faces are plotted.
 
@@ -126,7 +126,7 @@ plotted using the imshow() function from the matplotlib library.
 ```
 code here
 ```
-#### Problem (c): Finding Minimum Error and Optimizing Parameters
+#### Problem (c): Computing Correlation Matrix for Subset of Images
 This problem is similar to Problem (a), except the correlation matrix is now computed between a 
 different set of 10 images.
 
@@ -137,7 +137,7 @@ pcolor() function.
 ```
 code here
 ```
-#### Problem (d): Finding Minimum Error and Optimizing Parameters
+#### Problem (d): Finding the First Six Eigenvectors of $Y = XX^T$
 This problem involves finding the first six eigenvectors with the largest magnitude eigenvalues for 
 the matrix Y = XX^T, where X is the same matrix used in previous problems.
 
@@ -151,7 +151,7 @@ The first eigenvector is stored in the v_1 vector, which is printed.
 ```
 code here
 ```
-#### Problem (e): Finding Minimum Error and Optimizing Parameters
+#### Problem (e): Finding the First Six Principal Component Directions using SVD
 This problem involves computing the first six principal component directions of the matrix X using 
 Singular Value Decomposition (SVD).
 
@@ -165,7 +165,7 @@ The first six principal component directions are printed.
 ```
 code here
 ```
-#### Problem (f): Finding Minimum Error and Optimizing Parameters
+#### Problem (f): Comparing First Eigenvector and First SVD Mode
 In problem (d), we calculated the first eigenvector, v1, using the covariance matrix of the image 
 data matrix X. In problem (e), we obtained the first SVD mode, u1, by decomposing the data matrix X 
 into its singular values and singular vectors. 
@@ -180,7 +180,7 @@ of v_1 and u_1.
 ```
 code here
 ```
-#### Problem (g): Finding Minimum Error and Optimizing Parameters
+#### Problem (g): Computing Variance Captured by Each of the First 6 SVD Modes and Plotting Them
 In this problem, we compute the percentage of variance captured by each of the first six SVD modes 
 and plot the first six SVD modes. The code first computes the percentage of variance captured by each 
 of the first six SVD modes using the formula ((S[:6] ** 2) / np.sum(S ** 2)) * 100. It then prints 
