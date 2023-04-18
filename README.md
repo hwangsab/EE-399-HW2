@@ -253,5 +253,20 @@ the end, and because the dataset provided is relatively continuous, the model fi
 trained with points from the beginning and the end.
 
 ## Summary and Conclusions:
-Overall, this homework assignment provides an opportunity to explore and analyze a real-world dataset
-using various linear algebra techniques. 
+In this assignment, we learned how to perform data analysis on a set of images using linear algebra 
+concepts and Python programming. Specifically, we computed the correlation matrix between images, 
+found the most highly correlated and uncorrelated images, computed the eigenvectors and singular 
+values of the matrix, and analyzed the percentage of variance captured by the first six SVD modes.
+
+We applied our knowledge of matrix operations, eigenvalues and eigenvectors, and singular value 
+decomposition to perform these analyses. We used dot products, element-wise multiplication, and 
+reshaping of matrices to prepare the data for analysis and visualization. We computed the eigenvalues 
+and eigenvectors of the correlation matrix to find the principal components of the data. We also 
+performed SVD to compress the data by retaining only a subset of the singular values.
+
+In conclusion, this assignment provided a valuable opportunity to apply theoretical concepts to real-
+world data and gain practical experience in data analysis. The knowledge and skills gained from this 
+assignment can be applied to a wide range of fields and applications, such as image processing, 
+machine learning, and data compression. By continuing to explore and expand upon these concepts and 
+techniques, we can continue to develop our understanding and expertise in linear algebra and data 
+analysis. 
