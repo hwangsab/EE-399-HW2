@@ -244,7 +244,7 @@ We could determine that the pairs `[86 88]` and `[54 64]` represent the indices 
 Plotting the following images yield:  
 ![download](https://user-images.githubusercontent.com/125385468/232675169-a2d1cddd-13b8-47db-b0f5-4176f676c089.png)
 
-and
+and  
 ![download](https://user-images.githubusercontent.com/125385468/232675206-9cf1c489-db47-4a41-a928-71bfea5d6583.png)
 
 #### Problem (c): Computing Correlation Matrix for Subset of Images
