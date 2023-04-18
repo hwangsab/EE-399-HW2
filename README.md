@@ -92,8 +92,8 @@ This homework assignment works around a dataset imported through the following l
 ```
 import numpy as np
 from scipy.io import loadmat
-results=loadmat(’yalefaces.mat’)
-X=results[’X’]
+results = loadmat(’yalefaces.mat’)
+X = results[’X’]
 ```
 
 Completion of this project and subsequent development and implementation of the algorithm was 
