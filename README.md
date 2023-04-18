@@ -27,11 +27,11 @@ computations for SVD, eigenvector comparisons, and percentage of variance.
 
 ## Introduction and Overview:
 In this homework assignment, we will explore a dataset of 39 different faces, each with about 65 
-different lighting scenes, for a total of 2414 images. The images are downsampled to 32 x 32 pixels 
-and converted into grayscale with values ranging from 0 to 1. The dataset is stored in a matrix X of 
-size 1024 x 2414, where each column corresponds to an image.
+different lighting scenes, for a total of 2414 images. The images are downsampled to 32x32 pixels 
+and converted into grayscale with values ranging from 0 to 1. The dataset is stored in a matrix $X$ 
+of size 1024x2414, where each column corresponds to an image.
 
-The first task (a) is to compute a 100x100 correlation matrix C, where each element represents the 
+The first task (a) is to compute a 100x100 correlation matrix $C$, where each element represents the 
 correlation between two images. The correlation is computed as the dot product between the two 
 images' vectors. We will plot the correlation matrix using the pcolor function.
 
@@ -44,12 +44,12 @@ matrix and plot it. This will allow us to compare the correlation between images
 of the dataset.
 
 In parts (d) and (e), we will use different methods to find the first six eigenvectors and principal 
-component directions, respectively, of the matrix X. We will then compare the first eigenvector found 
-using both methods and compute the norm of the difference in their absolute values.
+component directions, respectively, of the matrix $X$. We will then compare the first eigenvector 
+found using both methods and compute the norm of the difference in their absolute values.
 
 Finally, we will compute the percentage of variance captured by each of the first six SVD modes and 
 plot the first six SVD modes. This will give us an idea of how much information is retained by using 
-these modes to represent the images instead of the original matrix X.
+these modes to represent the images instead of the original matrix $X$.
 
 ## Theoretical Background:
 To successfully complete this assignment, a solid foundation in linear algebra and its applications 
@@ -58,7 +58,7 @@ singular value decomposition (SVD) is essential.
 
 Matrix operations such as addition, subtraction, and multiplication are fundamental to this 
 assignment. We will use dot products and element-wise multiplication of matrices to compute the 
-correlation matrix and to find the eigenvectors and singular values of the matrix X. Additionally, 
+correlation matrix and to find the eigenvectors and singular values of the matrix $X$. Additionally, 
 knowledge of matrix transposition and reshaping will be useful in preparing the data for analysis and 
 visualization.
 
@@ -70,10 +70,10 @@ correlation matrix to find the principal components of the data, which can be us
 dimensionality of the dataset while retaining most of the information.
 
 Singular value decomposition (SVD) is another key concept for this assignment. SVD decomposes a 
-matrix into three components: U, Σ, and V*, where U and V* are orthogonal matrices and Σ is a 
-diagonal matrix with the singular values of the original matrix on its diagonal. SVD is useful for 
-finding the principal components of a dataset and for compressing the data by retaining only a subset 
-of the singular values.
+matrix into three components: $U$, $Σ$, and $V*$, where $U$ and $V*$ are orthogonal matrices and $Σ$ 
+is a diagonal matrix with the singular values of the original matrix on its diagonal. SVD is useful 
+for finding the principal components of a dataset and for compressing the data by retaining only a 
+subset of the singular values.
 
 ## Algorithm Implementation and Development:
 This homework assignment works around a dataset imported through the following lines of code:
@@ -96,15 +96,15 @@ The code is written in Python and uses the following libraries:
 * `scipy` for curve fitting
 
 #### Problem (a): Computing Correlation Matrix using Dot Product
-In this problem, a 100 x 100 correlation matrix $C$ is computed by computing the dot product 
+In this problem, a 100x100 correlation matrix $C$ is computed by computing the dot product 
 (correlation) between the first 100 images in the matrix $X$. $X$ is an array consisting of 165 
 grayscale images of human faces from the Yale Face Database. These images have been preprocessed and 
 flattened to 1024-dimensional feature vectors.
 
-First, the scipy library is used to load the yalefaces.mat file which contains the matrix $X$. The 
+First, the `scipy` library is used to load the yalefaces.mat file which contains the matrix $X$. The 
 first 100 images of $X$ are selected by slicing the matrix. The numpy function `np.matmul()` is used 
 to compute the dot product between the image vectors. This returns the correlation between each pair 
-of images in a 100 x 100 symmetric matrix $C$. The plot of the correlation matrix is shown using the 
+of images in a 100x100 symmetric matrix $C$. The plot of the correlation matrix is shown using the 
 pcolor function of the matplotlib library. The color of each element of the plot represents the 
 strength of correlation between the corresponding images.
 
@@ -199,9 +199,9 @@ code here
 ## Computational Results:
 
 ### Usage
-To run the code, simply run the Python file hw2.py in any Python environment. The output will be 
-printed to the console and displayed in a pop-up window. The matplotlib library is required to 
-display the 2D error landscape plot. 
+To run the code, simply run the Python file `hw2.py` in any Python environment. The output will be 
+printed to the console and displayed in a pop-up window. The `matplotlib` library is required to 
+display the images in the form of a plot. 
 
 #### Problem 1: Finding Minimum Error and Optimizing Parameters
 The resultant cosine model fits over the data with optimized parameters with values as follows:
