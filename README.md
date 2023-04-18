@@ -96,92 +96,112 @@ The code is written in Python and uses the following libraries:
 * `scipy` for curve fitting
 
 #### Problem (a): Finding Minimum Error and Optimizing Parameters
-The code reads a dataset of 31 points and defines a function to fit the data using least-squares curve 
-fitting. The function `func(X, A, B, C, D)` is a combination of a cosine function and a linear function 
-with four parameters $A$, $B$, $C$, $D$ that are to be optimized. The `curve_fit` function from scipy 
-library is used to find the optimized values of the parameters. Then, the minimum error between the 
-function and the dataset is calculated, and the results are printed along with a plot of the function 
-fit to the data. 
+In this problem, a 100 x 100 correlation matrix C is computed by computing the dot product 
+(correlation) between the first 100 images in the matrix X. X is an array consisting of 165 grayscale 
+images of human faces from the Yale Face Database. These images have been preprocessed and flattened 
+to 1024-dimensional feature vectors.
+
+First, the scipy library is used to load the yalefaces.mat file which contains the matrix X. The 
+first 100 images of X are selected by slicing the matrix. The numpy function np.matmul() is used to 
+compute the dot product between the image vectors. This returns the correlation between each pair of 
+images in a 100 x 100 symmetric matrix C. The plot of the correlation matrix is shown using the 
+pcolor function of the matplotlib library. The color of each element of the plot represents the 
+strength of correlation between the corresponding images.
 
 ```
-def func(x, A, B, C, D):
-    return A*np.cos(B*x) + C*x + D
-
-popt, pcov = curve_fit(func, X, Y)
-
-A, B, C, D = popt
-
-error = np.sqrt(np.mean((func(X, A, B, C, D) - Y)**2))
+code here
 ```
+#### Problem (b): Finding Minimum Error and Optimizing Parameters
+In this problem, the most highly correlated and most uncorrelated pairs of images are identified from 
+the correlation matrix computed in Problem (a), and then the corresponding faces are plotted.
 
-#### Problem 2: Generating 2D Error Landscape
-The code generates a 2D error landscape by sweeping through different values of the function 
-parameters and fixing two parameters at a time. The error is calculated for each combination of 
-parameter values, and the results are plotted using pcolor from matplotlib library. 
+The indices of the most highly correlated pair and the least correlated pair are found by finding the 
+locations of the maximum and minimum values in the correlation matrix C using np.argwhere(). The pair 
+with the highest correlation has the second highest value (since the highest value corresponds to 
+self-correlation), and the pair with the least correlation has the second smallest value.
 
-The code first fixes A and B parameters and sweeps through C and D parameters, then fixes A and C 
-parameters and sweeps through B and D parameters, and finally fixes A and D parameters and sweeps 
-through B and C parameters. The min function is used to find the minimum error and the corresponding 
-parameter values. 
-
-For the example of a fixed parameters A and B, sweeping C and D program:
-```
-C_range = np.linspace(-5, 5, 100)
-D_range = np.linspace(30, 60, 100)
-C_grid, D_grid = np.meshgrid(C_range, D_range)
-error_grid = np.zeros_like(C_grid)
-for i in range(len(C_range)):
-    for j in range(len(D_range)):
-        C = C_range[i]
-        D = D_range[j]
-        error_grid[j,i] = np.sqrt(np.mean((func(X, A, B, C, D) - Y)**2))
-```
-
-#### Problem 3: Fitting and Applying Models to Datasets I
-The code uses the first 20 data points as training data to fit a line, a parabola, and a 19th degree
-polynomial to the specified points. Then, after computing the least-square error for each of these
-models over the training points, the program then computes the least-square error for each of these
-models on the remaining 10 data points excluded from the training data, which we refer to in the code
-as the test data. 
+For each pair of images, the corresponding face images are plotted side by side. The faces are 
+plotted using the imshow() function from the matplotlib library.
 
 ```
-# fit line, parabola, and 19th degree polynomial
-line_coeffs = np.polyfit(X_train, Y_train, 1)
-parabola_coeffs = np.polyfit(X_train, Y_train, 2)
-poly_coeffs = np.polyfit(X_train, Y_train, 19)
-
-# compute predictions on train and test data
-Y_line_train = np.polyval(line_coeffs, X_train)
-Y_parabola_train = np.polyval(parabola_coeffs, X_train)
-Y_poly_train = np.polyval(poly_coeffs, X_train)
-
-Y_line_test = np.polyval(line_coeffs, X_test)
-Y_parabola_test = np.polyval(parabola_coeffs, X_test)
-Y_poly_test = np.polyval(poly_coeffs, X_test)
-
-# compute least square error on train and test data
-line_train_error = np.sum((Y_line_train - Y_train)**2)
-parabola_train_error = np.sum((Y_parabola_train - Y_train)**2)
-poly_train_error = np.sum((Y_poly_train - Y_train)**2)
-
-line_test_error = np.sum((Y_line_test - Y_test)**2)
-parabola_test_error = np.sum((Y_parabola_test - Y_test)**2)
-poly_test_error = np.sum((Y_poly_test - Y_test)**2)
+code here
 ```
+#### Problem (c): Finding Minimum Error and Optimizing Parameters
+This problem is similar to Problem (a), except the correlation matrix is now computed between a 
+different set of 10 images.
 
-#### Problem 4: Fitting and Applying Models to Datasets II
-The code uses the first 10 and last 10 data poitns as training data to fit a line, a parabola, and a 
-19th degree polynomial to the specified points. Then, after computing the least-square error for each 
-of these models over the training points, the program then computes the least-square error for each of 
-these models on the remaining 10 data points from the middle of the data set, which were excluded from 
-the training data, which we refer to in the code as the test data. 
+A list of 10 image indices is specified and the corresponding images are extracted from the X matrix. 
+The images are then used to compute the correlation matrix C, which is again plotted using the 
+pcolor() function.
+
+```
+code here
+```
+#### Problem (d): Finding Minimum Error and Optimizing Parameters
+This problem involves finding the first six eigenvectors with the largest magnitude eigenvalues for 
+the matrix Y = XX^T, where X is the same matrix used in previous problems.
+
+The dot product of X with its transpose is computed to obtain the Y matrix. The numpy function 
+np.linalg.eigh() is used to compute the eigenvalues and eigenvectors of Y. The eigenvalues and 
+eigenvectors are sorted in descending order of eigenvalue magnitude using np.argsort()[::-1].
+
+The six eigenvectors with the largest magnitude eigenvalues are extracted and stored in the W matrix. 
+The first eigenvector is stored in the v_1 vector, which is printed.
+
+```
+code here
+```
+#### Problem (e): Finding Minimum Error and Optimizing Parameters
+This problem involves computing the first six principal component directions of the matrix X using 
+Singular Value Decomposition (SVD).
+
+The numpy function np.linalg.svd() is used to perform the SVD of X. The output of the function 
+consists of three matrices: U, S, and V, where U and V are unitary matrices, and S is a diagonal 
+matrix of singular values. The first six principal component directions are given by the first six 
+rows of the V matrix.
+
+The first six principal component directions are printed.
+
+```
+code here
+```
+#### Problem (f): Finding Minimum Error and Optimizing Parameters
+In problem (d), we calculated the first eigenvector, v1, using the covariance matrix of the image 
+data matrix X. In problem (e), we obtained the first SVD mode, u1, by decomposing the data matrix X 
+into its singular values and singular vectors. 
+
+In this problem, we compare the first eigenvector v1 and the first SVD mode u1 and compute the norm 
+of the difference between their absolute values. The code first extracts the first value of the SVD 
+mode U, u_1, by using the slice operation on the matrix U. Then, it computes the norm of the 
+difference between the absolute values of the first eigenvector v_1 and the first SVD mode u_1 using 
+the np.linalg.norm function. The result is printed as the norm of the difference of absolute values 
+of v_1 and u_1.
+
+```
+code here
+```
+#### Problem (g): Finding Minimum Error and Optimizing Parameters
+In this problem, we compute the percentage of variance captured by each of the first six SVD modes 
+and plot the first six SVD modes. The code first computes the percentage of variance captured by each 
+of the first six SVD modes using the formula ((S[:6] ** 2) / np.sum(S ** 2)) * 100. It then prints 
+the percentage of variance captured by each SVD mode from 1 to 6 using a for loop. Finally, the code 
+plots the first six SVD modes using a for loop and the imshow() function in matplotlib. 
+
+The modes are reshaped to the original image shape and transposed to display the image in the correct 
+orientation. The plot is displayed in a 2x3 grid with each plot displaying the image of the 
+corresponding SVD mode with a title "SVD Mode k", where k is the mode number from 0 to 5. The plot is 
+displayed using the plt.show() function.
+
+```
+code here
+```
 
 ## Computational Results:
 
 ### Usage
-To run the code, simply run the Python file hw1.py in any Python environment. The output will be 
-printed to the console and displayed in a pop-up window. The matplotlib library is required to display 
-the 2D error landscape plot. 
+To run the code, simply run the Python file hw2.py in any Python environment. The output will be 
+printed to the console and displayed in a pop-up window. The matplotlib library is required to 
+display the 2D error landscape plot. 
 
 #### Problem 1: Finding Minimum Error and Optimizing Parameters
 The resultant cosine model fits over the data with optimized parameters with values as follows:
@@ -194,58 +214,6 @@ D = 31.452772437053802
 In addition, the model has an minimum error value of `1.5927258503103892`
 
 ![Q1](https://user-images.githubusercontent.com/125385468/231071680-c452328b-7c99-4d80-91c0-8577614a15a9.png)
-
-#### Problem 2: Generating 2D Error Landscape
-The resultant minimum error calculated is as follows:
-```
-Fixed parameters A and B Minimum error: 1.61 at C = -4.60, D = 47.27
-Fixed parameters A and C Minimum error: 72.16 at B = 0.01, D = 33.64
-Fixed parameters A and D Minimum error: 14.69 at B = 0.44, C = 3.89
-Fixed parameters B and C Minimum error: 73.17 at A = 0.10, D = 60.00
-Fixed parameters B and D Minimum error: 14.75 at A = 0.93, C = -5.00
-Fixed parameters C and D Minimum error: 99.23 at A = 0.35, B = 1.00
-```
-
-2D Loss Landscapes are plotted for all 6 combinations as followed:
-![Q2](https://user-images.githubusercontent.com/125385468/231071717-11467706-e529-4f1d-bba3-6471f5920e45.png)
-
-#### Problem 3: Fitting and Applying Models to Datasets I
-The following graph displays the first 20 data points used as training data for a line, a parabola, and a 19th 
-degree polynomial model fit. 
-
-![Q3](https://user-images.githubusercontent.com/125385468/231071742-94d348a2-2248-4adf-828d-f3e9af9a42b6.png)
-
-```
-Line Train Error: 100.59849624060148
-Parabola Train Error: 90.35835042150828
-19th Degree Polynomial Train Error: 0.016076685015099894
-
-Line Test Data Error: 124.45472101305883
-Parabola Test Data Error: 835.2050011334942
-19th Degree Polynomial Test Data Error: 9.013397831469909e+21
-```
-
-#### Problem 4: Fitting and Applying Models to Datasets II
-The following graph displays the first 10 and last 10 data points used as training data for a line, a parabola, 
-and a 19th degree polynomial model fit. 
-
-![Q4](https://user-images.githubusercontent.com/125385468/231071779-fa8dc3e8-6866-49ca-932b-f11e48f9b65c.png)
-
-```
-Line Train Error: 68.75016908693057
-Parabola Train Error: 68.73967050163469
-19th Degree Polynomial Train Error: 1.0566927249586058
-
-Line Test Data Error: 86.95136045541048
-Parabola Test Data Error: 86.16001918838907
-19th Degree Polynomial Test Data Error: 67127.9806069814
-```
-Comparing questions II.iii and II.iv, the model generated that takes in the first 10 and last 10 data points 
-as training data and the middle 10 data points as test data (from II.iv) has a lower minimized error. The 
-magnitude at which these errors are different is that as the polynomial degree increases, the minimized 
-error will decrease more. This is most likely because the model accounts for the shape of the beginning and 
-the end, and because the dataset provided is relatively continuous, the model fits the data better if it is 
-trained with points from the beginning and the end.
 
 ## Summary and Conclusions:
 In this assignment, we learned how to perform data analysis on a set of images using linear algebra 
