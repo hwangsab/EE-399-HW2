@@ -27,7 +27,7 @@ computations for SVD, eigenvector comparisons, and percentage of variance.
 
 ## Introduction and Overview:
 In this homework assignment, we will explore a dataset of 39 different faces, each with about 65 
-different lighting scenes, for a total of 2,414 images. The images are downsampled to 32 x 32 pixels 
+different lighting scenes, for a total of 2414 images. The images are downsampled to 32 x 32 pixels 
 and converted into grayscale with values ranging from 0 to 1. The dataset is stored in a matrix X of 
 size 1024 x 2414, where each column corresponds to an image.
 
